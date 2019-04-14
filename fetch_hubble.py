@@ -1,7 +1,8 @@
 import requests,os
 import main
 
-def fetch_hubble(collection):
+def fetch_hubble():
+    collection='wallpaper'
     params = {'page': 'all'}
     response = requests.get(
         f'http://hubblesite.org/api/v3/images/{collection}', params=params)
