@@ -16,7 +16,7 @@ def get_extension(url):
 
 
 def download_image(url, name):
-    print('\u001b[1A загрузка файла',name ,'пожалуйста подождите...')
+    print('\u001b[1A загрузка файла с именем:',name ,',пожалуйста подождите...')
     img_response = requests.get(url)
     exstension = get_extension(url)
     fname = f'{PATH}/{name}.{exstension}'
@@ -25,15 +25,16 @@ def download_image(url, name):
 
 def main():
     
-    fetch_hubble.fetch_hubble('wallpaper')
+    fetch_hubble.fetch_hubble()
     fetch_spacex.fetch_spacex_last_launch('spacex')
+    caption='КосмоФото'
     bot = Bot()
     bot.login(username=os.getenv('LOGIN'), password=os.getenv('PASSWORD'))
     print('Начинаем выгрузку файлов в Instagram  ,пожалуйста подождите...')
     extension=('.jpg','.JPG','.png','.PNG')
     for img in os.listdir(PATH):
         if os.path.isfile(PATH+'/'+img) and img.endswith(extension):
-            bot.upload_photo(PATH+'/'+img, caption='КосмоФото')
+            bot.upload_photo(PATH+'/'+img, caption=caption)
             time.sleep(3)
         else:
             print('Подходящие файлы не найдены')
