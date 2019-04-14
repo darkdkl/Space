@@ -15,7 +15,7 @@ instabot для публикаций изображений в Instagram.
 https://api.spacexdata.com/v3/launches/latest
 ```
 см. 
-"flight_number": номер запуска </n>
+"flight_number": номер запуска. 
 необходимо обратить внимание,что фотографии последнего запуска размещаются не сразу.
 
 
