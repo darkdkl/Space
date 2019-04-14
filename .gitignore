@@ -1,1 +1,6 @@
 *.vscode
+*.env
+*.txt
+!requirements.txt
+*.log
+*.checkpoint
