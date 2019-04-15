@@ -1,5 +1,20 @@
 import requests,os
-import main
+
+PATH = os.path.normcase('./images')
+os.makedirs(PATH, exist_ok=True)
+
+def get_extension(url):
+    return url.rsplit('.')[-1]
+
+def download_image(url, name):
+    print('\u001b[1A загрузка файла с именем:',name ,',пожалуйста подождите...')
+    img_response = requests.get(url)
+    exstension = get_extension(url)
+    fname = f'{PATH}/{name}.{exstension}'
+    with open(fname, 'wb') as img:
+        img.write(img_response.content)
+
+
 
 def fetch_spacex_last_launch(name):
     launch='76'
@@ -10,4 +25,4 @@ def fetch_spacex_last_launch(name):
 
     for number, url_img in enumerate(url_imgs):
         names = f'{name}{number}'
-        main.download_image(url_img, names)
+        download_image(url_img, names)
