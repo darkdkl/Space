@@ -24,7 +24,7 @@ https://api.spacexdata.com/v3/launches
 * По умолчанию загружаются изображения из коллекции 'wallpaper'
 Вы можете изменить название коллекции:
 модуль <b>fetch_hubble.py</b>,переменная <b>collection ='wallpaper'</b>
-несколько имен текущих коллекций :<b>'news', 'spacecraft', 'printshop' </b>
+(несколько имен текущих коллекций :<b>'news', 'spacecraft', 'printshop') </b>
 #### Установка
 * Python3 должен быть уже установлен. Затем используйте pip (или pip3, есть конфликт с Python2) для установки зависимостей: 
 ```
