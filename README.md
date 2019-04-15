@@ -13,7 +13,7 @@ instabot для публикаций изображений в Instagram.
 модуль <b>fetch_spacex.py</b> переменная <b>launch='76'</b>( от 1го запуска до текущего) 
 см. значение ключа <b>"flight_number":</b> по адресу:
 ``` 
-https://api.spacexdata.com/v3/launches/latest 
+https://api.spacexdata.com/v3/launches
 
 ```
 
