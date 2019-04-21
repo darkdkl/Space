@@ -3,6 +3,7 @@ import download_img
 
 def fetch_spacex_last_launch(name):
     launch=check_img_last_launch_availability()
+    
     response = requests.get(f'https://api.spacexdata.com/v3/launches/{launch}')
     url_imgs = []
     for img_url_prepare in response.json()['links']["flickr_images"]:
@@ -15,19 +16,19 @@ def fetch_spacex_last_launch(name):
 def check_img_last_launch_availability():
 
     latest_launch_url='https://api.spacexdata.com/v3/launches/latest'
+   
     response = requests.get(latest_launch_url)
     number_of_flight=int(response.json()["flight_number"])
-    
-    if not bool(response.json()['links']["flickr_images"]):
-        launch_with_photo=0
-        while True:
-            launch_with_photo=number_of_flight-1
-            search = requests.get(f'https://api.spacexdata.com/v3/launches/{launch_with_photo}')
-            if bool(search):
+   
+    if not response.json()['links']["flickr_images"]:
+        for launch in range(number_of_flight,0,-1):
+            search_response = requests.get(f'https://api.spacexdata.com/v3/launches/{launch}')
+                       
+            if search_response.json()['links']["flickr_images"]:
                 break
-        return launch_with_photo
+        return launch
     return number_of_flight
-
+    
 
 if __name__ == "__main__":
     image_name='spacex_'    
